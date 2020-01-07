@@ -21,6 +21,7 @@ import com.example.assignment.Company
 import com.example.assignment.CompanyListAdapter
 import com.example.assignment.MySingleton
 import com.example.assignment.R
+import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -40,13 +41,16 @@ class HomeFragment : Fragment() {
         //progress = root.findViewById(R.id.progressBarHome)
         //progress.visibility = View.GONE
         companyList =ArrayList<Company>()
-        adapterview=CompanyListAdapter(companyList)
         syncCompany()
+        adapterview=CompanyListAdapter(companyList)
+
+
         val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerViewHome).apply{
             setHasFixedSize(true)
             layoutManager=LinearLayoutManager(activity)
             adapter = adapterview
         }
+        recyclerView.adapter=adapterview
         return root
     }
     /*
